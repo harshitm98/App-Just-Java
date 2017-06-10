@@ -38,16 +38,22 @@ public class MainActivity extends AppCompatActivity {
     int quantity = 0;
 
     public void submitOrder(View view) {
-        int numberOfCoffees = quantity;
-        display(numberOfCoffees);
-        displayPrice(numberOfCoffees * 10);
+        if(quantity<2){
+            String priceMessage = "Total cost of " + quantity + " coffee would be Rs. " + quantity*10;
+            displayMessage(priceMessage);
+        }
+
+        else {
+            String priceMessage = "Total cost of " + quantity + " coffees would be Rs. " + quantity * 10;
+            displayMessage(priceMessage);
+        }
+
     }
 
     public void increment(View view) {
         int numberOfCoffees = quantity+1;
         quantity++;
         display(numberOfCoffees);
-        displayPrice(numberOfCoffees * 10);
     }
 
     public void decrement(View view) {
@@ -58,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             numberOfCoffees=0;
         }
         display(numberOfCoffees);
-        displayPrice(numberOfCoffees * 10);
+
     }
 
     /**
@@ -67,6 +73,14 @@ public class MainActivity extends AppCompatActivity {
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
+    }
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
     }
 
     /**
