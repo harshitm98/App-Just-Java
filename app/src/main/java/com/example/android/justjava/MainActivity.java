@@ -38,17 +38,19 @@ public class MainActivity extends AppCompatActivity {
     int quantity = 0;
 
     public void submitOrder(View view) {
-        if(quantity<2){
-            String priceMessage = "Total cost of " + quantity + " coffee would be Rs. " + quantity*10;
-            displayMessage(priceMessage);
-        }
 
-        else {
-            String priceMessage = "Total cost of " + quantity + " coffees would be Rs. " + quantity * 10;
-            displayMessage(priceMessage);
-        }
+        int cost;
+        cost = calulatePrice(10);
+        String priceMessage = createorderSummary(cost);
+        displayMessage(priceMessage);
 
     }
+
+    private String createorderSummary(int price){
+        String name = "Harshit";
+        return("Name: " + name + "\nQuantity: " + quantity + "\nTotal: Rs" + price + "\nThanks mate!");
+    }
+
 
     public void increment(View view) {
         int numberOfCoffees = quantity+1;
@@ -89,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    }
+
+    private int calulatePrice(int pricePerCoffee){
+        return(quantity*pricePerCoffee);
     }
 
     @Override
