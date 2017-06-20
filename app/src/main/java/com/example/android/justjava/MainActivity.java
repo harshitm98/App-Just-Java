@@ -48,32 +48,28 @@ public class MainActivity extends AppCompatActivity {
 
     private String createorderSummary(int price){
         String name = "Harshit";
-        return("Name: " + name + "\nQuantity: " + quantity + "\nTotal: Rs" + price + "\nThanks mate!");
+        return("Name: " + name + "\nQuantity: " + quantity + "\nTotal: Rs " + price + "\nThanks mate!");
     }
 
 
     public void increment(View view) {
-        int numberOfCoffees = quantity+1;
         quantity++;
-        display(numberOfCoffees);
+        display(quantity);
     }
 
     public void decrement(View view) {
-        int numberOfCoffees = quantity-1;
         quantity--;
-        if(numberOfCoffees<0){
+        if(quantity<0){
             quantity=0;
-            numberOfCoffees=0;
         }
-        display(numberOfCoffees);
-
+        display(quantity);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
     private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        TextView quantityTextView = (TextView) findViewById(R.id.order_summary_text_view);
         quantityTextView.setText("" + number);
     }
 
@@ -81,17 +77,13 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.price_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     /**
      * This method displays the given price on the screen.
      */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
 
     private int calulatePrice(int pricePerCoffee){
         return(quantity*pricePerCoffee);
