@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
@@ -50,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String createorderSummary(int price){
         String name = "Harshit";
-        return("Name: " + name + "\nQuantity: " + quantity + "\nTotal: Rs " + price + "\nThanks mate!");
+        CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_id);
+        return("Name: " + name + "\nQuantity: " + quantity +"\nAdded whipped cream? " + checkBox.isChecked() + "\nTotal: Rs " + price + "\nThanks mate!");
     }
 
 
