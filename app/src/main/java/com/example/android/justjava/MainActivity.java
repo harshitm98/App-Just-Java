@@ -3,6 +3,7 @@ package com.example.android.justjava;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         cost = calulatePrice(10);
         String priceMessage = createorderSummary(cost);
         displayMessage(priceMessage);
+        Log.v("MainActivity", "The price is " + cost);
 
     }
 
