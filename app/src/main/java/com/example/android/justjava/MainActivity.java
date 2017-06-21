@@ -45,14 +45,15 @@ public class MainActivity extends AppCompatActivity {
         cost = calulatePrice(10);
         String priceMessage = createorderSummary(cost);
         displayMessage(priceMessage);
-        Log.v("MainActivity", "The price is " + cost);
+        
 
     }
 
     private String createorderSummary(int price){
         String name = "Harshit";
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_id);
-        return("Name: " + name + "\nQuantity: " + quantity +"\nAdded whipped cream? " + checkBox.isChecked() + "\nTotal: Rs " + price + "\nThanks mate!");
+        CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkbox_chocolate);
+        return("Name: " + name + "\nQuantity: " + quantity + "\nAdded whipped cream? " + checkBox.isChecked() + "\nAdded chocolate? " + checkBox1.isChecked() + "\nTotal: Rs " + price + "\nThanks mate!");
     }
 
 
