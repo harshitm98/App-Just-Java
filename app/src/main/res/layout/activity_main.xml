@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            android:id = "@+id/name_id"/>
+            android:id = "@+id/name_id"
+            android:inputType="textCapWords"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,9 +72,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="QUANTITY"
-            android:textColor="#b8ac9e"
-            android:textSize="25sp" />
+            android:text="QUANTITY" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -109,28 +108,11 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="ORDER SUMMARY"
-            android:textColor="#b8ac9e"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/price_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Rs. 0"
-            android:textColor="#000000"
-            android:textSize="25sp" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="submitOrder"
+            android:layout_marginTop="25dp"
             android:text="order" />
     </LinearLayout>
 

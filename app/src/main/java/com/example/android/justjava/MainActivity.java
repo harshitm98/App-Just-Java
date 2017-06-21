@@ -1,5 +1,6 @@
 package com.example.android.justjava;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,19 +42,42 @@ public class MainActivity extends AppCompatActivity {
      */
     int quantity = 0;
 
+    public void composeEmail(String subject, String body) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        //intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+
     public void submitOrder(View view) {
 
         int cost;
+
+        EditText name = (EditText) findViewById(R.id.name_id);
+        String realName = name.getText().toString();
+
         cost = calulatePrice(10);
         String priceMessage = createorderSummary(cost);
-        displayMessage(priceMessage);
+        //displayMessage(priceMessage);
+
+        String subject = "Just Java for " + realName +  " mate!";
+
+        composeEmail(subject,priceMessage);
+
 
 
     }
 
+
+
     private String createorderSummary(int price){
         EditText name = (EditText) findViewById(R.id.name_id);
-        Editable realName = name.getText();
+        String realName = name.getText().toString();
         //String name = "Harshit";
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_id);
         CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkbox_chocolate);
@@ -85,17 +109,23 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given text on the screen.
      */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.price_text_view);
-        orderSummaryTextView.setText(message);
-    }
+
 
     /**
      * This method displays the given price on the screen.
      */
 
     private int calulatePrice(int pricePerCoffee){
-        return(quantity*pricePerCoffee);
+        CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_id);
+        CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkbox_chocolate);
+        int price = pricePerCoffee;
+        if(checkBox.isChecked()){
+            price +=3;
+        }
+        if(checkBox1.isChecked()){
+            price +=2;
+        }
+        return(quantity*price);
     }
 
     @Override
