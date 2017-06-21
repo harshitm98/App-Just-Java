@@ -3,9 +3,11 @@ package com.example.android.justjava;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
@@ -45,15 +47,17 @@ public class MainActivity extends AppCompatActivity {
         cost = calulatePrice(10);
         String priceMessage = createorderSummary(cost);
         displayMessage(priceMessage);
-        
+
 
     }
 
     private String createorderSummary(int price){
-        String name = "Harshit";
+        EditText name = (EditText) findViewById(R.id.name_id);
+        Editable realName = name.getText();
+        //String name = "Harshit";
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_id);
         CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkbox_chocolate);
-        return("Name: " + name + "\nQuantity: " + quantity + "\nAdded whipped cream? " + checkBox.isChecked() + "\nAdded chocolate? " + checkBox1.isChecked() + "\nTotal: Rs " + price + "\nThanks mate!");
+        return("Name: " + realName + "\nQuantity: " + quantity + "\nAdded whipped cream? " + checkBox.isChecked() + "\nAdded chocolate? " + checkBox1.isChecked() + "\nTotal: Rs " + price + "\nThanks mate!");
     }
 
 
